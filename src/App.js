@@ -6,40 +6,35 @@ import Recommendations from "./Components/Recommendations/Recommendations";
 import VideoContainer from "./Components/VidoeContainer/VideoContainer";
 import WatchPage from "./Components/Watch/WatchPage";
 const App = () => {
-
-const appRouter = createBrowserRouter([
-  {
-    path: "/",
-    element:<Body/>,
-    children:[
-
-      {
-        path:'/',
-        element:<div>  <Recommendations /> <VideoContainer /> </div>
-      },
-      {
-        path:'/watch',
-        element:<WatchPage/>
-      }
-    ]
-  }
-])
-
-
-
+  const appRouter = createBrowserRouter([
+    {
+      path: "/",
+      element: <Body />,
+      children: [
+        {
+          path: "/",
+          element: (
+            <div>
+              {" "}
+              <Recommendations /> <VideoContainer />{" "}
+            </div>
+          ),
+        },
+        {
+          path: "/watch",
+          element: <WatchPage />,
+        },
+      ],
+    },
+  ]);
 
   return (
     <>
-
       <div>
         <Header />
-     
-    <RouterProvider router={appRouter}>
 
-    </RouterProvider>
+        <RouterProvider router={appRouter}></RouterProvider>
       </div>
-
-   
     </>
   );
 };

@@ -11,8 +11,8 @@ const Body = ({}) => {
       <div className="flex ">
         <Sidebar />
         <div className="flex flex-col">
-          
-          {/* <Recommendations />
+         {/*  
+          <Recommendations />
           <VideoContainer /> */}
           <Outlet/>
         </div>

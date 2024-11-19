@@ -1,5 +1,6 @@
 import { ArrowRight, Camera, Clock, History, Home, List, MoveRight, PlaySquare, SubscriptIcon, ThumbsUp, User, Video } from 'lucide-react'
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 const Sidebar = () => {
   return (
@@ -7,7 +8,7 @@ const Sidebar = () => {
       <div className=''>
         <div className='flex px-2 py-2'>
           <Home className=''/>
-          Home
+          <Link to={"/"}> Home</Link>
         </div>
         <div className='flex px-2 py-2'>
           <Video className='' />
