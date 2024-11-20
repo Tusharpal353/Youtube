@@ -1,14 +1,26 @@
 import { BellDot,  Menu, Search, User, Video } from "lucide-react";
-import React from "react";
+import React, { createContext, useState } from "react";
+import { useDispatch } from "react-redux";
+import { toogleMenu } from "../../Utils/Store/AppSlice";
 
 const Header = () => {
+  const dispatch = useDispatch()
+  
+  const HandleToogleMenu =()=>{
+    dispatch(toogleMenu() )
+
+  }
+
+
+  const context= createContext(true);
   return (
+
     <>
       <div className="w-full border py-4 flex justify-between">
         <div>
           <div className="w-16 h-10 flex ">
-            <div className="pl-4 ">
-              <Menu />
+            <div className="pl-4 " onClick={HandleToogleMenu}>
+              <Menu  />
             </div>
             
           
