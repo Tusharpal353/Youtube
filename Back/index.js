@@ -5,14 +5,14 @@ app.use(cors())
 app.get('/', async (req, res) => {
  /*  const query = req.query.q; */
 
-  const url = "http://suggestqueries.google.com/complete/search?client=firefox&ds=yt&q=iphone";
+  const url = "http://suggestqueries.google.com/complete/search?client=firefox&ds=yt&q=gens";
 
   try {
     const response = await fetch(url);
     const data = await response.json();
-    console.log(data);
+    console.log(data[1]);
     
-    res.json(data);
+    res.json(data[1]);
   } catch (error) {
     res.status(500).send('Error fetching suggestions');
   }

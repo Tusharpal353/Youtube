@@ -1,29 +1,41 @@
-import { BellDot,  Menu, Search, User, Video } from "lucide-react";
-import React, { createContext, useState } from "react";
+import { BellDot, Menu, Search, User, Video } from "lucide-react";
+import React, { createContext, useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { toogleMenu } from "../../Utils/Store/AppSlice";
 
 const Header = () => {
-  const dispatch = useDispatch()
-  
-  const HandleToogleMenu =()=>{
-    dispatch(toogleMenu() )
+  const dispatch = useDispatch();
+  const [searchSuggestions, setSearchSuggestions] = useState([]);
+  const [searchInput, setSearchInput] = useState("");
 
-  }
+  console.log(searchSuggestions, "search suggestion");
+  useEffect(() => {
+    fetch("http://localhost:5000")
+      .then((res) => res.json())
+      .then((res) => {
+        setSearchSuggestions(res);
+      })
+      .catch((err) => console.log(err));
+  }, []);
 
+ 
+  const HandleToogleMenu = () => {
+    dispatch(toogleMenu());
+  };
+  const handleChange = (e) => {
+    setSearchInput(e.target.value);
+    console.log(searchInput);
+  };
 
-  const context= createContext(true);
+  const context = createContext(true);
   return (
-
     <>
       <div className="w-full border py-4 flex justify-between">
         <div>
           <div className="w-16 h-10 flex ">
             <div className="pl-4 " onClick={HandleToogleMenu}>
-              <Menu  />
+              <Menu />
             </div>
-            
-          
 
             <div className="flex">
               <img
@@ -33,19 +45,42 @@ const Header = () => {
               />
               <h1 className="text-2xl font-bold">Youtube</h1>
             </div>
-           
           </div>
         </div>
         <div className="flex ">
-          <input
-            className="border py-2 rounded-lg"
-            type="text"
-            placeholder="search"
-            name=""
-            value=""
-          />
+          <div>
+            <input
+              className="border py-2 w-96 rounded-lg"
+              type="text"
+              placeholder="search"
+              name=""
+              value={searchInput}
+              onChange={handleChange}
+            />
+
+            <div>
+              <ul className="fixed bg-white w-96 border">
+              
+                 {searchSuggestions.map((res, index) => (
+                  <li
+                    className="hover:bg-slate-200 px-4 py-[0.5] cursor-pointer"
+                    key={index}
+                  >
+                    {" "}
+                    {res}
+                  </li>
+                ))}
+                {/*   <li>ihone</li>
+                <li>ihone</li>
+                <li>ihone</li>
+                <li>ihone</li>
+                <li>ihone</li> */}
+              </ul>
+            </div>
+          </div>
           <Search className="mt-2" />
         </div>
+
         <div className="flex">
           <p className="px-2">
             <Video />

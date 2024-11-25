@@ -11,19 +11,19 @@ if(!BarOpen) return null
 
 
   return (
-    <div className='border h-screen  overflow-y-auto max-h-screen' >
+    <div className='border h-full  overflow-y-auto max-h-full' >
       <div >
         <div className='w-60'>
           <div className='flex px-2 py-2'>
-            <Home className=''/>
+            <Home className='mx-2'/>
             <Link to={"/"}> Home</Link>
           </div>
           <div className='flex px-2 py-2'>
-            <Video className='' />
+            <Video className='mx-2' />
             Shorts
           </div>
           <div className='flex px-2 py-2'>
-            <PlaySquare className=''/>
+            <PlaySquare className='mx-2'/>
             Subscription
           </div>
           <hr/>
@@ -31,26 +31,26 @@ if(!BarOpen) return null
         <div className=''>
           <div className='flex'>
             <p>You</p>
-            <ArrowRight/>
+            <ArrowRight className='mx-2'/>
           </div>
           <div className='flex px-2 py-2'>
-            <History className=''/>
+            <History className='mx-2'/>
             History
           </div>
           <div className='flex px-2 py-2'>
-            <List className='' />
+            <List className='mx-2' />
             Playlist
           </div>
           <div className='flex px-2 py-2'>
-            <Camera className=''/>
+            <Camera className='mx-2'/>
             your Videos
           </div>
           <div className='flex px-2 py-2'>
-            <ThumbsUp className=''/>
+            <ThumbsUp className='mx-2'/>
             liked Videos
           </div>
           <div className='flex px-2 py-2'>
-            <Clock className=''/>
+            <Clock className='mx-2'/>
             watchlater
           </div>
           <hr/>
@@ -58,39 +58,55 @@ if(!BarOpen) return null
         <div>
           <h1>SubscriptIcon</h1>
           <div className='flex py-2'>
-            <User/>
+            <User className='mx-2'/>
             <p>user1</p>
           </div>
           <div className='flex py-2'>
-            <User/>
+            <User className='mx-2'/>
             <p>user1</p>
           </div>
           <div className='flex py-2'>
-            <User/>
+            <User className='mx-2'/>
             <p>user1</p>
           </div>
           <div className='flex py-2'>
-            <User/>
+            <User className='mx-2'/>
             <p>user1</p>
           </div>
           <div className='flex py-2'>
-            <User/>
+            <User className='mx-2'/>
             <p>user1</p>
           </div>
           <div className='flex py-2'>
-            <User/>
+            <User className='mx-2'/>
             <p>user1</p>
           </div>
           <div className='flex py-2'>
-            <User/>
+            <User className='mx-2'/>
             <p>user1</p>
           </div>
           <div className='flex py-2'>
-            <User/>
+            <User className='mx-2'/>
             <p>user1</p>
           </div>
           <div className='flex py-2'>
-            <User/>
+            <User className='mx-2'/>
+            <p>user1</p>
+          </div>
+          <div className='flex py-2'>
+            <User className='mx-2'/>
+            <p>user1</p>
+          </div>
+          <div className='flex py-2'>
+            <User className='mx-2'/>
+            <p>user1</p>
+          </div>
+          <div className='flex py-2'>
+            <User className='mx-2'/>
+            <p>user1</p>
+          </div>
+          <div className='flex py-2'>
+            <User className='mx-2'/>
             <p>user1</p>
           </div>
         </div>
@@ -100,3 +116,4 @@ if(!BarOpen) return null
 }
 
 export default Sidebar
+
