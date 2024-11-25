@@ -2,11 +2,12 @@ import { BellDot, Menu, Search, User, Video } from "lucide-react";
 import React, { createContext, useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { toogleMenu } from "../../Utils/Store/AppSlice";
-
+import { Clock } from "lucide-react";
 const Header = () => {
   const dispatch = useDispatch();
   const [searchSuggestions, setSearchSuggestions] = useState([]);
   const [searchInput, setSearchInput] = useState("");
+  const [showSuggestion, setSuggestions] = useState(false);
 
   console.log(searchSuggestions, "search suggestion");
   useEffect(() => {
@@ -18,7 +19,6 @@ const Header = () => {
       .catch((err) => console.log(err));
   }, []);
 
- 
   const HandleToogleMenu = () => {
     dispatch(toogleMenu());
   };
@@ -56,20 +56,23 @@ const Header = () => {
               name=""
               value={searchInput}
               onChange={handleChange}
+              onFocus={()=>setSuggestions(true)}
+              onBlur={()=>setSuggestions(false)}
             />
 
             <div>
-              <ul className="fixed bg-white w-96 border">
-              
-                 {searchSuggestions.map((res, index) => (
-                  <li
-                    className="hover:bg-slate-200 px-4 py-[0.5] cursor-pointer"
-                    key={index}
-                  >
-                    {" "}
-                    {res}
-                  </li>
-                ))}
+              <ul className="fixed bg-white w-96   ">
+                {showSuggestion &&
+                  searchSuggestions.map((res, index) => (
+                    <div className="flex p-1 hover:bg-slate-200">
+                      <Clock />
+                      <li className=" px-4 py-[0.5] cursor-pointer" key={index}>
+                        {" "}
+                        {res}
+                      </li>
+                    </div>
+                  ))}
+
                 {/*   <li>ihone</li>
                 <li>ihone</li>
                 <li>ihone</li>
