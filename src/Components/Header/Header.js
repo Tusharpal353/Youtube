@@ -9,22 +9,29 @@ const Header = () => {
   const [searchInput, setSearchInput] = useState("");
   const [showSuggestion, setSuggestions] = useState(false);
 
-  console.log(searchSuggestions, "search suggestion");
+  /* console.log(searchSuggestions, "search suggestion"); */
   useEffect(() => {
-    fetch("http://localhost:5000")
+    fetch(`http://localhost:5000?q=${searchInput}`)
       .then((res) => res.json())
       .then((res) => {
         setSearchSuggestions(res);
       })
       .catch((err) => console.log(err));
-  }, []);
+  }, [searchInput]);
 
   const HandleToogleMenu = () => {
     dispatch(toogleMenu());
   };
   const handleChange = (e) => {
+
+
     setSearchInput(e.target.value);
-    console.log(searchInput);
+const timer=    setTimeout(()=> console.log(searchInput),1000)
+
+    return ()=>{
+      clearTimeout(timer)
+    }
+    
   };
 
   const context = createContext(true);

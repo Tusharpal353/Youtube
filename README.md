@@ -11,5 +11,6 @@ Daily Log
 
 - Day 3
      - Made api call with express for search bar
+     - we cannot make direct API call in the frontend so express server is introduced
      
      

@@ -3,9 +3,9 @@ const cors = require("cors")
 const app = express();
 app.use(cors())
 app.get('/', async (req, res) => {
- /*  const query = req.query.q; */
+  const query = req.query.q;
 
-  const url = "http://suggestqueries.google.com/complete/search?client=firefox&ds=yt&q=gens";
+  const url = `http://suggestqueries.google.com/complete/search?client=firefox&ds=yt&q=${query}`;
 
   try {
     const response = await fetch(url);
