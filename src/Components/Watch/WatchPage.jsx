@@ -3,7 +3,7 @@ import { useEffect } from "react";
 import { useSearchParams } from "react-router-dom";
 import { COMMENTS_URL } from "../../Utils/Constant";
 import { ThumbsUp } from "lucide-react";
-
+import { formatDistanceToNow } from "date-fns";
 const WatchPage = () => {
   const [searchParams] = useSearchParams();
   const [comments, setComments] = useState([]);
@@ -74,6 +74,9 @@ export default WatchPage;
 
 
 const CommenCard = ({ cmt }) => {
+    const publishedDate = cmt.snippet.topLevelComment.snippet.publishedAt;
+  const relativeDate = formatDistanceToNow(new Date(publishedDate), { addSuffix: true });
+
     return (
       <div className="flex py-2">
         <div className="p-3">
@@ -86,13 +89,14 @@ const CommenCard = ({ cmt }) => {
         <div>
           <div className="flex">
             <p className="text-sm font-semibold">{cmt.snippet.topLevelComment.snippet.authorDisplayName}</p>
-            <p>{cmt.snippet.topLevelComment.snippet.publishedAt}</p>
+            <p className="text-xs text-gray-500 pl-2">{relativeDate}</p>
           </div>
           <h1>
             {cmt.snippet.topLevelComment.snippet.textDisplay}
           </h1>
           <div className="flex">
-            <ThumbsUp />
+          
+            <ThumbsUp  className="w-5 h-5 "/>
             <p>{cmt.snippet.topLevelComment.snippet.likeCount}</p>
           </div>
         </div>

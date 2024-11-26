@@ -8,6 +8,7 @@
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
     "cors": "^2.8.5",
+    "date-fns": "^4.1.0",
     "express": "^4.21.1",
     "lucide-react": "^0.460.0",
     "nodemon": "^3.1.7",
