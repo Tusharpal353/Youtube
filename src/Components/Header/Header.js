@@ -10,27 +10,35 @@ const Header = () => {
   const [showSuggestion, setSuggestions] = useState(false);
 
   /* console.log(searchSuggestions, "search suggestion"); */
-  useEffect(() => {
+
+  const getSearchData = () => {
     fetch(`http://localhost:5000?q=${searchInput}`)
       .then((res) => res.json())
       .then((res) => {
+        console.log(searchSuggestions);
         setSearchSuggestions(res);
       })
       .catch((err) => console.log(err));
+  };
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      console.log("api call made"+ searchInput)
+
+      if(searchInput)
+      getSearchData();
+    }, 300);
+
+    return () => {
+      clearTimeout(timer);
+    };
   }, [searchInput]);
 
   const HandleToogleMenu = () => {
     dispatch(toogleMenu());
   };
   const handleChange = (e) => {
-
-
     setSearchInput(e.target.value);
-const timer=    setTimeout(()=> console.log(searchInput),1000)
-
-    return ()=>{
-      clearTimeout(timer)
-    }
     
   };
 
@@ -63,8 +71,8 @@ const timer=    setTimeout(()=> console.log(searchInput),1000)
               name=""
               value={searchInput}
               onChange={handleChange}
-              onFocus={()=>setSuggestions(true)}
-              onBlur={()=>setSuggestions(false)}
+              onFocus={() => setSuggestions(true)}
+              onBlur={() => setSuggestions(false)}
             />
 
             <div>
