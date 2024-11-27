@@ -25,7 +25,6 @@ const VideoContainer = () => {
             {videoData ? videoData.map((card)=>
             <Link to={"/watch?v="+card.id}>
             <VideoCard key={card.id} videodata={card} />
-            <h1>hi</h1>
             </Link>
             )  : <p>loading</p>}
         </div>
