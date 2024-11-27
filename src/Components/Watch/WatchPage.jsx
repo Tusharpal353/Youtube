@@ -48,16 +48,13 @@ const WatchPage = () => {
   };
 
   return (
-    <div className="ml-28">
+    <div className="container mx-auto px-4 py-8 max-w-6xl">
       {/* Video Player */}
-      <div className="pt-10">
+      <div className="mb-8">
         <iframe
-          className="rounded-lg"
-          width="960"
-          height="515"
+          className="w-full aspect-video rounded-lg shadow-lg"
           src={`https://www.youtube.com/embed/${id}`}
           title="YouTube video player"
-          style={{ border: "none" }}
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
           referrerPolicy="strict-origin-when-cross-origin"
           allowFullScreen
@@ -66,39 +63,38 @@ const WatchPage = () => {
 
       {/* Channel Details */}
       {channelDetails && (
-        <div className="mt-5 p-4 border rounded-lg bg-gray-100">
-          <div className="flex items-center">
+        <div className="bg-gray-100 rounded-lg shadow-md p-6 mb-8">
+          <div className="flex items-center mb-4">
             <img
               src={channelDetails.snippet.thumbnails.default.url}
               alt="Channel Logo"
-              className="w-16 h-16 rounded-full"
+              className="w-16 h-16 rounded-full mr-4"
             />
-            <div className="ml-4">
-              <h2 className="text-lg font-bold">{channelDetails.snippet.title}</h2>
+            <div>
+              <h2 className="text-xl font-bold">{channelDetails.snippet.title}</h2>
               <p className="text-sm text-gray-600">
-                Subscribers: {channelDetails.statistics.subscriberCount}
+                {parseInt(channelDetails.statistics.subscriberCount).toLocaleString()} subscribers
               </p>
               <p className="text-sm text-gray-600">
-                Videos: {channelDetails.statistics.videoCount}
+                {parseInt(channelDetails.statistics.videoCount).toLocaleString()} videos
               </p>
             </div>
           </div>
-          <p className="mt-3 text-sm">{channelDetails.snippet.description}</p>
+          <p className="text-sm text-gray-700">{channelDetails.snippet.description}</p>
         </div>
       )}
 
       {/* Comments Section */}
-      <div className="font-bold text-xl m-2">Comments</div>
-      <div className="border-b-2 p-2"></div>
-
-      {comments.map((cmt) => (
-        <CommentCard key={cmt.id} cmt={cmt} />
-      ))}
+      <div className="mb-4">
+        <h3 className="text-2xl font-bold mb-2">Comments</h3>
+        <div className="border-b-2 border-gray-200 mb-4"></div>
+        {comments.map((cmt) => (
+          <CommentCard key={cmt.id} cmt={cmt} />
+        ))}
+      </div>
     </div>
   );
 };
-
-export default WatchPage;
 
 const CommentCard = ({ cmt }) => {
   const publishedDate = cmt.snippet.topLevelComment.snippet.publishedAt;
@@ -107,27 +103,27 @@ const CommentCard = ({ cmt }) => {
   });
 
   return (
-    <div className="flex py-2">
-      <div className="p-3">
-        <img
-          className="rounded-full w-10"
-          src={cmt.snippet.topLevelComment.snippet.authorProfileImageUrl}
-          alt="channel logo"
-        />
-      </div>
-      <div>
-        <div className="flex">
-          <p className="text-sm font-semibold">
+    <div className="flex items-start mb-6">
+      <img
+        className="w-10 h-10 rounded-full mr-4"
+        src={cmt.snippet.topLevelComment.snippet.authorProfileImageUrl}
+        alt="User avatar"
+      />
+      <div className="flex-1">
+        <div className="flex items-center mb-1">
+          <p className="font-semibold mr-2">
             {cmt.snippet.topLevelComment.snippet.authorDisplayName}
           </p>
-          <p className="text-xs text-gray-500 pl-2">{relativeDate}</p>
+          <p className="text-xs text-gray-500">{relativeDate}</p>
         </div>
-        <h1>{cmt.snippet.topLevelComment.snippet.textDisplay}</h1>
-        <div className="flex">
-          <ThumbsUp className="w-5 h-5" />
-          <p>{cmt.snippet.topLevelComment.snippet.likeCount}</p>
+        <p className="text-gray-700 mb-2">{cmt.snippet.topLevelComment.snippet.textDisplay}</p>
+        <div className="flex items-center text-gray-500">
+          <ThumbsUp className="w-4 h-4 mr-1" />
+          <p className="text-sm">{cmt.snippet.topLevelComment.snippet.likeCount}</p>
         </div>
       </div>
     </div>
   );
 };
+
+export default WatchPage;

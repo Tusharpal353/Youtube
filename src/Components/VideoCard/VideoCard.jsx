@@ -9,10 +9,10 @@ const VideoCard = ({videodata}) => {
 
         navigate("/viewVideoPage")
     }
-   /*  521 × 416 */
+ 
   return (
     <>
-        <div className='border max-w-xs min-h-60  rounded-xl shadow-xl m-2 ' onClick={handleClick}>
+        <div className='border max-w-[300px] min-h-60  rounded-xl shadow-xl m-2 ' onClick={handleClick}>
             <img className='w-full rounded-t-xl' src={snippet.thumbnails.medium.url} alt="thumbnail" />
             <h1 className='font-semibold'>{snippet.title}</h1>
             <h1 className='text-gray-600 text-sm'>{snippet.channelTitle}</h1>
