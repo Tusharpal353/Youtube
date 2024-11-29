@@ -7,11 +7,15 @@ import VideoContainer from "./Components/VidoeContainer/VideoContainer";
 import WatchPage from "./Components/Watch/WatchPage";
 import { Provider } from "react-redux";
 import appStore from "./Utils/Store/AppStore";
+import SearchReuslt from "./Components/SearchResult/SearchReuslt";
 const App = () => {
   const appRouter = createBrowserRouter([
     {
       path: "/",
-      element: <Body />,
+      element: (<div>
+        <Header/>
+        <Body />
+      </div>),
       children: [
         {
           path: "/",
@@ -26,19 +30,27 @@ const App = () => {
           path: "/watch",
           element: <WatchPage />,
         },
+        {
+          path: "/search",
+          element: <SearchReuslt />,
+        },
       ],
     },
   ]);
 
   return (
     <Provider store={appStore}>
-    <>
-      <div>
-        <Header />
+   
+     
 
-        <RouterProvider router={appRouter}></RouterProvider>
-      </div>
-    </>
+    
+        <RouterProvider router={appRouter}>
+      
+          <Body/>
+       
+        </RouterProvider>
+
+ 
     </Provider>
   );
 };
