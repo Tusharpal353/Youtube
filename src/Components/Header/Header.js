@@ -45,6 +45,13 @@ const Header = () => {
   const handleSearchClick =()=>{
     navigate(`/search?q=${searchInput}`)
   }
+
+  const handleSuggestionClick = (suggestion) => {
+    // If the suggestion is an object, access the property you need (e.g., 'title' or 'name')
+    setSearchInput(suggestion);
+    navigate(`/search?q=${suggestion}`);
+  };
+  
   return (
     <header className="bg-white shadow-md">
       <div className="container mx-auto px-4 py-3 flex items-center justify-between">
@@ -79,15 +86,17 @@ const Header = () => {
           </div>
           {showSuggestion && searchSuggestions.length > 0 && (
             <ul className="absolute z-10 w-full max-w-xl bg-white border border-gray-300 rounded-lg shadow-lg mt-1">
-              {searchSuggestions.map((res, index) => (
-                <li
-                  key={index}
-                  className="flex items-center px-4 py-2 cursor-pointer hover:bg-gray-100"
-                >
-                  <Search className="w-4 h-4 mr-2 text-gray-500" />
-                  <span>{res}</span>
-                </li>
-              ))}
+             {searchSuggestions.map((res, index) => (
+  <li
+    key={index}
+    className="flex items-center px-4 py-2 cursor-pointer hover:bg-gray-100"
+    onClick={() => handleSuggestionClick(res)} // Pass the actual suggestion object or value
+  >
+    <Search className="w-4 h-4 mr-2 text-gray-500" />
+    <span>{res}</span> {/* Adjust this if 'res' is an object */}
+  </li>
+))}
+
             </ul>
           )}
         </div>
