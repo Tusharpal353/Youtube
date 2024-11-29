@@ -129,7 +129,7 @@ const Sidebar = () => {
   if (!BarOpen) return null
 
   return (
-    <div className="w-64 h-full overflow-y-auto bg-white shadow-md">
+    <div className="w-64 h-full overflow-y-auto bg-white shadow-md fixed">
       <div className="py-4">
         <div className="mb-6">
           <SidebarItem to="/" icon={<Home className="w-5 h-5" />} text="Home" />

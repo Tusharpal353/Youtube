@@ -8,13 +8,14 @@ import WatchPage from "./Components/Watch/WatchPage";
 import { Provider } from "react-redux";
 import appStore from "./Utils/Store/AppStore";
 import SearchReuslt from "./Components/SearchResult/SearchReuslt";
+import ReginoalTrend from "./Components/ReginoalTrending/ReginoalTrend";
 const App = () => {
   const appRouter = createBrowserRouter([
     {
       path: "/",
       element: (<div>
-        <Header/>
-        <Body />
+        <Header className="" />
+        <Body className=""/>
       </div>),
       children: [
         {
@@ -33,6 +34,10 @@ const App = () => {
         {
           path: "/search",
           element: <SearchReuslt />,
+        },
+        {
+          path: "/globaltrending",
+          element: <ReginoalTrend />,
         },
       ],
     },
