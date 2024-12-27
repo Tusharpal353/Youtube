@@ -21,9 +21,9 @@ const App = () => {
         {
           path: "/",
           element: (
-            <div>
+            <div className="pt-10" >
               {" "}
-              <Recommendations /> <VideoContainer />{" "}
+               <VideoContainer />{" "}
             </div>
           ),
         },

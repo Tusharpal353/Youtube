@@ -1,8 +1,8 @@
-/* import React from "react";
+import React from "react";
 
 const Recommendations = () => {
   return (
-    <div className=" pt-4">
+    <div className=" relativept-4">
       <ul className="flex overflow-x-auto max-w-screen-xl  text-nowrap    ">
         <li
           className="px-2 mx-2  bg-slate-200 rounded-lg"
@@ -69,15 +69,15 @@ const Recommendations = () => {
 };
 
 export default Recommendations;
- */
 
+/* 
 import React, { useState } from 'react'
 import { ChevronLeft, ChevronRight } from 'lucide-react'
 
 const categories = [
   "All", "Gaming", "Music", "Genshin Impact", "Software Engineering",
   "Cooking", "Travel", "Science", "Technology", "Sports",
-  "Fashion", "Art", "Photography", "Movies", "Anime","laptop","Fortnite"
+  "Fashion", "Art", "Photography", "Movies", "Anime"
 ]
 
 const Recommendations = () => {
@@ -93,7 +93,7 @@ const Recommendations = () => {
   }
 
   return (
-    <div className='relative pt-4 pb-2 overflow-x-auto text-nowrap'>
+    <div className='relative pt-4 pb-2'>
       <div className='flex items-center'>
         <button 
           onClick={() => scroll('left')} 
@@ -127,3 +127,4 @@ const Recommendations = () => {
 
 export default Recommendations
 
+ */
